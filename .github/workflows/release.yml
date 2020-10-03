@@ -26,7 +26,7 @@ jobs:
           poetry install
 
       - name: Bump release version
-        run: poetry version ${{ github.ref }} && poetry version
+        run: poetry version $( echo '${{ github.ref }}' | sed 's/refs\/tags\///' )
 
       - name: Build package
         run: poetry build
